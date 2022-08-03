@@ -11,9 +11,10 @@ type Product {
   description: String!
   price: Float!
   category: String!
+  imageUrl: String
   shop: Shop! @relation
 }
 
 type Query {
-  getAllProducts: [Product]!
+  getAllProducts: [Product]
 }
