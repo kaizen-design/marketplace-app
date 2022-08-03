@@ -1,26 +1,31 @@
 import type { NextPage } from 'next';
 import { gql, useQuery } from '@apollo/client';
+import ProductList from '../components/ProductList';
 
-const GET_SHOP = gql`
+const GET_PRODUCTS = gql`
   query {
-    findShopByID(id: "338699675637908044") {
-      _id
-      description
-      name
-      ownerID
-      products {
+    getAllProducts {
+      data {
         _id
+        name
+        description
+        price
+        shop {
+          _id
+        }
       }
     }
   }
 `;
 
 const Home: NextPage = () => {
-  const { data } = useQuery(GET_SHOP);
-  console.log(data);
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  //console.log(data.getAllProducts.data);
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      Home page
+      <ProductList products={data.getAllProducts.data} />
     </div>
   )
 }
