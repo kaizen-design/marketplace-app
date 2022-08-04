@@ -15,7 +15,7 @@ export default function Nav() {
           <div className="flex">
             <div className="ml-6 flex space-x-8">
               <Link href="/">
-                <a className={navLinkStyle}> Home </a>
+                <a className={navLinkStyle}>Home</a>
               </Link>
             </div>
           </div>
@@ -37,8 +37,16 @@ export default function Nav() {
                   </a>
                 ) : (
                   <>
-                    <img className='rounded-full h-8 w-8 ml-2' src={user.picture} alt={user.name} />
+                    <img 
+                      className='rounded-full h-8 w-8 ml-2' 
+                      src={user.picture || ''} 
+                      alt={user.name || ''} />
                     <span className='ml-2 mr-2'>{user.name}</span>
+                    <Link href='/manage-shops/'>
+                      <a className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                        Manage Shops
+                      </a>
+                    </Link>                    
                     <a href='/api/auth/logout' className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
                       Logout
                     </a>
