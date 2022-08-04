@@ -1,10 +1,13 @@
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const navLinkStyle = `cursor-pointer inline-flex items-center px-1 pt-1 text-gray-500 hover:text-indigo-400`
 
 const iconButtonStyle = `flex bg-white p-2 rounded-full text-gray-400 hover:text-indigo-400 border-2 border-gray-500 hover:border-indigo-400`
 
 export default function Nav() {
+  const { user, isLoading } = useUser();
+  console.log(user)
   return (
     <nav className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4">
@@ -19,13 +22,29 @@ export default function Nav() {
 
           <div className="ml-6 flex items-center">
             <Link href="/cart">
-            <button className={iconButtonStyle}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              {` ${3} Item(s)`}
-            </button>
+              <button className={iconButtonStyle}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                {` ${3} Item(s)`}
+              </button>
             </Link>
+            { 
+              !isLoading ?
+                !user ? (
+                  <a href='/api/auth/login' className='rounded-md border bg-purple-100 px-2 py-3 mr-2 ml-3'>
+                    Login as Vendor
+                  </a>
+                ) : (
+                  <>
+                    <img className='rounded-full h-8 w-8 ml-2' src={user.picture} alt={user.name} />
+                    <span className='ml-2 mr-2'>{user.name}</span>
+                    <a href='/api/auth/logout' className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                      Logout
+                    </a>
+                  </>
+                ) : ''
+            }
           </div>
         </div>
       </div>
