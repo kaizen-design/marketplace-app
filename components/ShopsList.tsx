@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ShopsList({ shops }: { shops: any }) {
   return (
     <div className="pb-10 max-w-4xl mx-auto">
@@ -9,7 +11,9 @@ export default function ShopsList({ shops }: { shops: any }) {
               <li className="flex justify-between items-center p-3">
                 <h2 className="text-lg">{shop.name}</h2>
                 <div>
-                  <button className={btnClass}>Add Product</button>
+                  <Link href={`/shops/${shop._id}/products`}>
+                    <a className={btnClass}>Add Product</a>
+                  </Link>  
                   <button className={deleteBtn}>Delete Shop</button>
                 </div>
               </li>
