@@ -43,11 +43,11 @@ export default function Nav() {
                       alt={user.name || ''} />
                     <span className='ml-2 mr-2'>{user.name}</span>
                     <Link href='/manage-shops/'>
-                      <a className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                      <a className='my-1 rounded-md bg-indigo-100 px-4 py-2 text-indigo-700 hover:bg-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2'>
                         Manage Shops
                       </a>
                     </Link>                    
-                    <a href='/api/auth/logout' className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                    <a href='/api/auth/logout' className='my-1 rounded-md bg-indigo-100 px-4 py-2 text-indigo-700 hover:bg-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2'>
                       Logout
                     </a>
                   </>

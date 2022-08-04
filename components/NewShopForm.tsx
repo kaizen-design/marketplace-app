@@ -74,7 +74,7 @@ const NewShopForm = ({ accessToken }: { accessToken: string }) => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="p-20">
+    <form onSubmit={handleSubmit} className="py-20 max-w-4xl mx-auto">
       <label className={labelStyle}>Shop Name </label>
       <div className="mt-1 mb-3">
         <input 
@@ -94,7 +94,7 @@ const NewShopForm = ({ accessToken }: { accessToken: string }) => {
       <div className="mt-1 mb-3">
         <input type="text" className={inputStyle} name="coverImg" onChange={handleChange}/>
       </div>
-      <button className={btnStyle} type="submit">Create</button>
+      <button className={btnStyle} type="submit">Create New Shop</button>
 
     </form>
   )
