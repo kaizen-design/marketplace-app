@@ -28,7 +28,7 @@ export default function Cart() {
           onClick={(e: any) => {
             e.preventDefault();
             fetch(
-              `${process.env.NEXT_PUBLIC_BASE_URL}/api/create-checkout-session`,
+              `/api/create-checkout-session`,
               {
                 method: 'POST',
                 body: JSON.stringify({ cart })
